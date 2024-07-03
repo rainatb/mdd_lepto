@@ -1,4 +1,7 @@
+# Code written by Raina, Caroline & Aly
 data <- read.csv('finalized_dataframe_May24.csv')
+
+# This is the code used to generate the initial pdps and feature importance plots for KC poster
 
 data <- data[, -1]
 data <- data[, -13]
@@ -25,6 +28,7 @@ library(dplyr)
 library(pROC)
 
 # rerunning model with no min precip
+# Written by Caroline Glidden
 for (x in 1:50) {
   shuffling_rows <- sample(nrow(data))
   data_shuffled <- data[shuffling_rows,]
@@ -123,7 +127,7 @@ for (x in 1:50) {
   auc_per_run[x, "model"] <- x
   auc_per_run[x, "auc"] <- auc$auc
   feature_importance_data <- xgb.importance(model = xgb.fit)
-  
+  # Written alongisde Aly Singleton
   for (y in 1:10){
     importance_bootstrap_current <- feature_importance_data[y, "Gain"]
     feature_importance_optimal_model <- rbind(
