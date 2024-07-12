@@ -3,8 +3,12 @@
 
 library(blockCV)
 library(tmap)
-theme_update(plot.title = element_text(hjust = 0.5))
+library(ggplot2)
+library(xgboost)
+library(pdp)
+library(sf)
 
+theme_update(plot.title = element_text(hjust = 0.5))
 districts <- read_sf("/Users/rashitalwarbhatia/Downloads/folder/Madre_de_Dios.shp")
 districts <- st_as_sf(districts)
 districts$geometry <- st_transform(districts$geometry, 4326)
